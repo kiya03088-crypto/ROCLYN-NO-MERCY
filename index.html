@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0d"><title>ROCLYN NO MERCY — Members</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow"></div><header><div class="brandmark">RNM</div><div><div class="eyebrow">GANGSTAR MIRAGE CITY</div><h1>ROCLYN <span>NO MERCY</span></h1></div><button id="logout" class="secondary hidden">Keluar</button></header>
+<main>
+<section id="setup" class="panel setup"><h2>Hubungkan database online</h2><p>Masukkan URL proyek Supabase dan anon/publishable key. Nilai ini bukan password admin; keamanan tetap ditentukan oleh RLS di database.</p><label>Supabase Project URL<input id="supabaseUrl" placeholder="https://xxxx.supabase.co"></label><label>Anon / Publishable key<input id="supabaseKey" placeholder="sb_publishable_... atau anon key"></label><button id="connect">Hubungkan</button><p class="hint">Untuk keamanan, jangan masukkan service_role key di browser.</p></section>
+<section id="login" class="panel hidden"><div class="eyebrow red">ADMIN ACCESS</div><h2>Masuk ke panel</h2><p>Gunakan akun admin yang dibuat di Supabase Authentication.</p><label>Email admin<input id="email" type="email" autocomplete="username" placeholder="admin@email.com"></label><label>Password<input id="password" type="password" autocomplete="current-password" placeholder="Password"></label><button id="signin">Login aman</button><p id="loginMsg" class="hint"></p></section>
+<section id="app" class="hidden">
+<div class="hero"><div><div class="eyebrow red">MEMBER COMMAND CENTER</div><h2>Dashboard</h2><p>Kelola roster clan dan catatan kehadiran.</p></div><div class="total"><strong id="memberCount">0</strong><span>ANGGOTA</span></div></div>
+<div class="tabs"><button class="tab active" data-tab="members">Anggota</button><button class="tab" data-tab="attendance">Absen</button></div>
+<section id="members" class="panel"><div class="sectionhead"><h3>Daftar Anggota</h3><button id="addMember">+ Tambah</button></div><input id="search" placeholder="Cari nama / Player ID…"><div class="tablewrap"><table><thead><tr><th>Nama</th><th>Player ID</th><th>Level akun</th><th>Aksi</th></tr></thead><tbody id="memberRows"></tbody></table></div><p id="memberMsg" class="hint"></p></section>
+<section id="attendance" class="panel hidden"><div class="sectionhead"><h3>Absensi Anggota</h3><input id="absDate" type="date"></div><p class="hint">Pilih tanggal lalu tandai kehadiran. Hanya admin dapat menyimpan perubahan.</p><div class="tablewrap"><table><thead><tr><th>Anggota</th><th>Status</th></tr></thead><tbody id="attendanceRows"></tbody></table></div><button id="saveAttendance">Simpan absensi</button><p id="attendanceMsg" class="hint"></p><hr><h3>Riwayat tanggal terpilih</h3><div id="history" class="history"></div></section>
+</section>
+</main>
+<dialog id="memberDialog"><form method="dialog" id="memberForm"><h2 id="dialogTitle">Tambah anggota</h2><input type="hidden" id="memberId"><label>Nama anggota<input id="memberName" required maxlength="80"></label><label>Player ID<input id="playerId" maxlength="80"></label><label>Level akun<input id="accountLevel" type="number" min="0" max="9999"></label><div class="actions"><button type="button" id="cancelDialog" class="secondary">Batal</button><button type="submit">Simpan</button></div></form></dialog>
+<div id="toast" role="status"></div><footer>ROCLYN NO MERCY <span>•</span> Member system</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="app.js"></script>
+</body></html>
